@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 // import SingleProduct from "./SingleProduct";
 
 export default function Data() {
+    const navigate = useNavigate()
   const [list, setList] = useState([]);
   const [loading, setLoading] = useState(false);
   const fetchData = async () => {
@@ -13,7 +14,7 @@ export default function Data() {
       const res = await axios.get(api);
       setList(res.data);
       setLoading(false);
-    //   console.log(res.data);
+      //   console.log(res.data);
     } catch (error) {
       console.log(error);
     }
@@ -21,6 +22,8 @@ export default function Data() {
   return (
     <>
       App
+      <Outlet />
+      <div><button onClick={()=>navigate("/contact")}></button></div>
       <div>
         <button onClick={fetchData}>press</button>
       </div>
@@ -28,7 +31,7 @@ export default function Data() {
       {list.map((e) => {
         return (
           <NavLink to={`/product/${e.id}`} key={e.id}>
-          {e.title}
+            {e.title}
           </NavLink>
         );
       })}

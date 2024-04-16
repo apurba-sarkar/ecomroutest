@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 const PageNavigation = () => {
   return (
     <div>
-      <NavLink to="/">Home</NavLink>
+      <div style={{backgroundColor:"red"}}>this is dform</div>
     </div>
   );
 };

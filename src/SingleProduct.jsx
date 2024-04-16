@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Outlet, useParams } from "react-router-dom";
 
 const SingleProduct = () => {
   const [product, setProduct] = useState(null);
@@ -24,6 +25,10 @@ const SingleProduct = () => {
     <div>
       {product && (
         <div>
+          <div style={{ backgroundColor: "red" }}>
+            {" "}
+            <Outlet />
+          </div>
           <h3>{product.title}</h3>
           <div>
             <img src={product.image} alt="" />
